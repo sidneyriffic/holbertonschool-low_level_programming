@@ -8,8 +8,8 @@
  */
 int main(void)
 {
-	char buffer[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	char b[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
 
-	fwrite(buffer, sizeof(char), sizeof(buffer) / sizeof(char), stdout);
+	fwrite(b, sizeof(char), sizeof(b) / sizeof(char), stderr);
 	return (1);
 }
