@@ -2,7 +2,7 @@
 
 
 /**
- * main - A simple program that outputs a line of text using puts() 
+ * main - A simple program that outputs a line of text using puts()
  *
  * Return: 0 upon completion
  */
