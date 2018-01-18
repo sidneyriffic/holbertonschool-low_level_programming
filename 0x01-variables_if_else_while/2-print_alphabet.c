@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 /**
- * main - a simple program that outputs the lowercase alphabet
+ * main - a simple program that prints out the lowercase alphabet
  *
- * Return: 0 on success
+ * Return: 0 on completion
  */
 int main(void)
 {
-	for (char a = 'a'; a < 123; a++)
+	for (char a = 'a'; a <= 'z'; a++)
 		putchar(a);
 	putchar('\n');
 	return (0);
