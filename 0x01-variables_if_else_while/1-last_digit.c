@@ -25,7 +25,7 @@ int main(void)
 	if (nlastabs > 6)
 		printf("%d is %d and is greater than 5\n", n, nlast);
 	else if (nlastabs > 0)
-		printf("%d is %d and is less than 6 and greater than 0\n", n, nlast);
+		printf("%d is %d and is less than 6 and not 0\n", n, nlast);
 	else
 		printf("%d is %d and is 0\n", n, nlast);
 	return (0);
