@@ -8,9 +8,11 @@
 int main(void)
 {
 	char alpha = '0';
+	int i;
 
-	for (int i = 0; i < 10; i++, alpha++)
+	for (i = 0; i < 10; i++, alpha++)
 		putchar(alpha);
 	putchar('\n');
+
 	return (0);
 }

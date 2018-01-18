@@ -8,8 +8,9 @@
 int main(void)
 {
 	char alpha = 'z';
+	int i = 0;
 
-	for (int i = 0; i < 26; i++, alpha--)
+	for (i = 0; i < 26; i++, alpha--)
 		putchar(alpha);
 	putchar('\n');
 	return (0);

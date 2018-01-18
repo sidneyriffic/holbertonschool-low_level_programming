@@ -8,8 +8,9 @@
 int main(void)
 {
 	char alpha = 'a';
+	int i;
 
-	for (int i = 0; i < 26; i++, alpha++)
+	for (i = 0; i < 26; i++, alpha++)
 		if (alpha != 'q' && alpha != 'e')
 			putchar(alpha);
 	putchar('\n');

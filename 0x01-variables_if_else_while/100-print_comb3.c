@@ -7,9 +7,12 @@
  */
 int main(void)
 {
-	for (int i = 48; i < 57; i++)
+	int i;
+	int j;
+
+	for (i = 48; i < 57; i++)
 	{
-		for (int j = i; j < 58; j++)
+		for (j = i; j < 58; j++)
 		{
 			putchar(i);
 			putchar(j);

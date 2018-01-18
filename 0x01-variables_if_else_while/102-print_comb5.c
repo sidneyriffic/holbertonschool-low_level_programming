@@ -8,12 +8,14 @@
  */
 int main(void)
 {
+	int ifirst;
+	int i;
 	int jfirst;
 	int j;
 
-	for (int ifirst = 48; ifirst < 58; ifirst++)
+	for (ifirst = 48; ifirst < 58; ifirst++)
 	{
-		for (int i = 48; i < 58; i++)
+		for (i = 48; i < 58; i++)
 		{
 			j = i + 1;
 			jfirst = ifirst;
