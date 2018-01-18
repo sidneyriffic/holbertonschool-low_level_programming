@@ -7,10 +7,8 @@
  */
 int main(void)
 {
-	char alpha = 'a';
-
-	for (int i = 0; i < 26; i++, alpha++)
-		putchar(alpha);
+	for (char a = 'a'; a < 122; a++)
+		putchar(a);
 	putchar('\n');
 	return (0);
 }
