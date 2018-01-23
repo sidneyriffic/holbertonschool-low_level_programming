@@ -1,4 +1,4 @@
-#include "putchar.c"
+#include "holberton.h"
 
 /**
  * print_alphabet - prints the alphabet
