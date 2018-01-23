@@ -1,6 +1,7 @@
 #ifndef HolbertonH
 #define HolbertonH
-#include "putchar.c"
+
+int _putchar(char);
 
 /**
  * printstr - print a given string using _putchar
