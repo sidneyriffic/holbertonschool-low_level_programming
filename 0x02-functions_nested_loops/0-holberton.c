@@ -10,6 +10,6 @@ int main(void)
 	int i = 0;
 
 	while (str[i] != '\0')
-		_putchar(str[i]);
+		_putchar(str[i++]);
 	return (0);
 }
