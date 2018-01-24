@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAXULI9 1000000000000000000
+#define MAXULI9 10000000000
 
 /**
  * main - prints the first 100 Fibonacci numbers, starting with 1 and 2,
@@ -41,9 +41,9 @@ int main(void)
 		}
 
 		if (currentfirst != 0)
-			printf(", %lu%lu", currentfirst, currentsecond);
+			printf("%d, %lu%lu\n", i, currentfirst, currentsecond);
 		else
-			printf(", %lu", currentsecond);
+			printf("%d, %lu\n", i, currentsecond);
 	}
 	printf("\n");
 	return (0);
