@@ -12,9 +12,9 @@
 int main(void)
 {
 	int i;
-	unsigned long int onebeforefirst = 0, onebeforesecond = 0;
-	unsigned long int twobeforefirst = 0, twobeforesecond = 0;
-	unsigned long int currentfirst = 0, currentsecond = 0;
+	unsigned long onebeforefirst = 0, onebeforesecond = 0;
+	unsigned long twobeforefirst = 0, twobeforesecond = 0;
+	unsigned long currentfirst = 0, currentsecond = 0;
 
 	onebeforesecond = 2;
 	twobeforesecond = 1;
@@ -42,7 +42,7 @@ int main(void)
 		}
 
 		if (currentfirst != 0)
-			printf(", %lu%lu", currentfirst, currentsecond);
+			printf(", %lu%010lu", currentfirst, currentsecond);
 		else
 			printf(", %lu", currentsecond);
 	}
