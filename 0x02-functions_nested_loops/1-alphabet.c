@@ -6,10 +6,9 @@
  */
 void print_alphabet(void)
 {
-	char str[] = "abcdefghijklmnopqrstuvwxyz\n";
-	int i = 0;
+	char i = 'a';
 
-	while (str[i] != '\0')
-		_putchar(str[i++]);
+	while (i <= 'z')
+		_putchar(i++);
 	_putchar('\n');
 }
