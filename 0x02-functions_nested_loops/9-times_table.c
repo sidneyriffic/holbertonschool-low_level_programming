@@ -1,4 +1,21 @@
 #include "holberton.h"
+
+/**
+ * _printstr - prints a given string
+ * @c: a null temrinated character array
+ *
+ * Return: 0 if successful
+ */
+int _printstr(char c[])
+{
+	int i = 0;
+
+	while (c[i] != '\0')
+		_putchar(c[i++]);
+
+	return (0);
+}
+
 /**
  * times_table - prints out a multiplication table for between
  * 0 and 9
@@ -25,6 +42,5 @@ void times_table(void)
 					line[i * 4 - 1]++;
 			}
 		}
-		sleep(1);
 	}
 }
