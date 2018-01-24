@@ -14,7 +14,8 @@ int main(void)
 	onebefore = 1;
 	twobefore = 1;
 	current = 2;
-	printf("1, 2");
+	printf("%lu", twobefore);
+	printf("%lu", current);
 	for (i = 2; i <= 50; i++)
 	{
 		twobefore = onebefore;
