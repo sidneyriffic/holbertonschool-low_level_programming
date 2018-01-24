@@ -5,9 +5,10 @@
  *
  * Return: 0 on completion
  */
-int jack_bauer()
+int jack_bauer(void)
 {
 	char x[6] = "00:00\n";
+
 	while (x[0] != '2' ||  x[1] != '4')
 	{
 		_printstr(x);

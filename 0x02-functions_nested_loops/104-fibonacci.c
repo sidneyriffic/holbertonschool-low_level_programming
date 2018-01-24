@@ -2,7 +2,8 @@
 
 /**
  * main - prints the first 100 Fibonacci numbers, starting with 1 and 2,
- * followed by a new line, without using long long, arrays or dynamic allocation
+ * followed by a new line, without using long long, arrays or dynamic
+ * allocation
  *
  * Return: 0 on success
  */

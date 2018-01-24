@@ -10,7 +10,7 @@ void print_times_table(int n)
 	char buffer[5] = ",    ";
 	int i, j, num;
 
-	if(n < 1 or n > 15)
+	if (n < 1 or n > 15)
 		return;
 	for (i = 0; i <= n; i++)
 	{
