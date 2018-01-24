@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define MAXULI9 1000000000000000000
+
 /**
  * main - prints the first 100 Fibonacci numbers, starting with 1 and 2,
  * followed by a new line, without using long long, arrays or dynamic
@@ -10,19 +12,35 @@
 int main(void)
 {
 	int i;
-	double onebefore, twobefore, current;
+	unsigned long int onebeforefirst = 0, onebeforesecond = 0;
+	unsigned long int twobeforefirst = 0, twobeforesecond = 0;
+	unsigned long int currentfirst = 0, currentsecond = 0;
 
-	onebefore = 1;
-	twobefore = 1;
-	current = 2;
+	onebeforesecond = 1;
+	twobeforesecond = 1;
+	currentsecond = 2;
 	printf("1, 2");
-	for (i = 2; i < 97; i++)
+	for (i = 2; i < 100; i++)
 	{
-		twobefore = onebefore;
-		onebefore = current;
-		current = twobefore + onebefore;
+		twobeforefirst = onebeforefirst;
+		twobeforesecond = onebeforesecond;
 
-		printf(", %f\n", current);
+		onebeforefirst = currentfirst;
+		onebeforesecond = currentsecond;
+
+		currentfirst = twobeforefirst + onebeforefirst;
+		currentsecond = twobeforesecond + onebeforesecond;
+
+		if (currentsecond >= MAXULI9)
+		{
+			currentfirst++;
+			currentsecond -= MAXULI9;
+		}
+
+		if (currentfirst != 0)
+			printf(", %lu%lu", currentfirst, currentsecond);
+		else
+			printf(", %lu", currentsecond);
 	}
 	printf("\n");
 	return (0);
