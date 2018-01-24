@@ -23,7 +23,7 @@ int main(void)
 	printf("%lu", onebeforesecond);
 	printf(", %lu", currentsecond);
 
-	for (i = 2; i < 100; i++)
+	for (i = 2; i < 98; i++)
 	{
 		twobeforefirst = onebeforefirst;
 		twobeforesecond = onebeforesecond;
