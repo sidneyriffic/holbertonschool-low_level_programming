@@ -37,13 +37,13 @@ void print_times_table(int n)
 		for (j = 1; j <= n; j++)
 		{
 			num = i * j;
-			buffer[3] = num / 100 + 48;
-			buffer[4] = num / 10 % 10 + 48;
-			buffer[5] = num % 10 + 48;
-			if (buffer[3] == '0')
+			buffer[2] = num / 100 + 48;
+			buffer[3] = num / 10 % 10 + 48;
+			buffer[4] = num % 10 + 48;
+			if (buffer[2] == '0')
+				buffer[2] = ' ';
+			if (buffer[3] == '0' && buffer[2] == ' ')
 				buffer[3] = ' ';
-			if (buffer[4] == '0' && buffer[3] == ' ')
-				buffer[4] = ' ';
 			_printstr(buffer);
 		}
 		_putchar('\n');
