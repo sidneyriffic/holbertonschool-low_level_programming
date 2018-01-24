@@ -19,7 +19,10 @@ int main(void)
 	onebeforesecond = 1;
 	twobeforesecond = 1;
 	currentsecond = 2;
-	printf("1, 2");
+
+	printf("%lu", onebeforesecond);
+	printf(", %lu", currentsecond);
+
 	for (i = 2; i < 100; i++)
 	{
 		twobeforefirst = onebeforefirst;
