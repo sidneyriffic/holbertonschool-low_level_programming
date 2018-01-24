@@ -41,9 +41,9 @@ int main(void)
 		}
 
 		if (currentfirst != 0)
-			printf("%d, %lu%lu\n", i, currentfirst, currentsecond);
+			printf("%d, %lu%lu", i, currentfirst, currentsecond);
 		else
-			printf("%d, %lu\n", i, currentsecond);
+			printf("%d, %lu", i, currentsecond);
 	}
 	printf("\n");
 	return (0);
