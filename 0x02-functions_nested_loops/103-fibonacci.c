@@ -18,7 +18,7 @@ int main(void)
 	printf("1, 2");
 	evenfibsum = 2;
 
-	for (i = 2; i < 50; i++)
+	for (i = 2; current < 4000000; i++)
 	{
 		twobefore = onebefore;
 		onebefore = current;
