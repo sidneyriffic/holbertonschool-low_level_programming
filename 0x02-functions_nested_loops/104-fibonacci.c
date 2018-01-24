@@ -16,14 +16,15 @@ int main(void)
 	unsigned long int twobeforefirst = 0, twobeforesecond = 0;
 	unsigned long int currentfirst = 0, currentsecond = 0;
 
-	onebeforesecond = 1;
+	onebeforesecond = 2;
 	twobeforesecond = 1;
-	currentsecond = 2;
+	currentsecond = onebeforesecond + twobeforesecond;
 
-	printf("%lu", onebeforesecond);
+	printf("%lu", twobeforesecond);
+	printf(", %lu", onebeforesecond);
 	printf(", %lu", currentsecond);
 
-	for (i = 2; i < 98; i++)
+	for (i = 3; i < 98; i++)
 	{
 		twobeforefirst = onebeforefirst;
 		twobeforesecond = onebeforesecond;
