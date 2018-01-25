@@ -22,8 +22,7 @@ void print_number(int n)
 	}
 
 	i = 1000000000;
-	do
-	{
+	do {
 		if (i <= u || i == 1)
 			_putchar(u / i % 10 + '0');
 		i /= 10;
