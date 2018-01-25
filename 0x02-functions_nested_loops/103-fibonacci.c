@@ -15,10 +15,9 @@ int main(void)
 	onebefore = 1;
 	twobefore = 1;
 	current = 2;
-	printf("1, 2");
 	evenfibsum = 2;
 
-	for (i = 2; i < 50; i++)
+	for (i = 2; current < 4000000; i++)
 	{
 		twobefore = onebefore;
 		onebefore = current;
@@ -26,9 +25,7 @@ int main(void)
 
 		if (!(current % 2))
 			evenfibsum += current;
-
-		printf(", %ld", current);
 	}
-	printf("\n");
+	printf("%ld\n", evenfibsum);
 	return (0);
 }
