@@ -8,22 +8,22 @@
 int _atoi(char *s)
 {
 	int pluses = 0, minuses = 0;
-	int i, sum = 0;
+	int sum = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (; *s != '\0'; s++)
 	{
-		if (s[i] == '+')
+		if (*s == '+')
 			pluses++;
-		else if (s[i] == '-')
+		else if (*s == '-')
 			minuses++;
-		else if (s[i] >= '0' && s[i] <= '9')
+		else if (*s >= '0' && *s <= '9')
 			break;
 	}
-	while (s[i] >= '0' && s[i] <= '9')
+	while (*s >= '0' && *s <= '9')
 	{
 		sum *= 10;
-		sum += s[i] - '0';
-		i++;
+		sum += *s - '0';
+		s++;
 	}
 
 	if (minuses > pluses)
