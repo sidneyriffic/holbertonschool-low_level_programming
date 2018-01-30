@@ -18,7 +18,7 @@ int main(void)
 
 	while (sum <= 2646)
 	{
-		randchar = rand() % 94 + 33;
+		randchar = rand() % 127;
 		write(1, &randchar, 1);
 		sum += randchar;
 	}
