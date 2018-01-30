@@ -7,16 +7,16 @@
  */
 int _atoi(char *s)
 {
-	int pluses = 0, minuses = 0;
+	int signs = 0;
 	unsigned int sum = 0;
 	int final = 0;
 
 	for (; *s != '\0'; s++)
 	{
 		if (*s == '+')
-			pluses++;
+			signs++;
 		else if (*s == '-')
-			minuses++;
+			signs--;
 		else if (*s >= '0' && *s <= '9')
 			break;
 	}
@@ -26,10 +26,11 @@ int _atoi(char *s)
 		sum += *s - '0';
 		s++;
 	}
-	final = sum;
 
-	if (minuses > pluses)
+	if (signs < 0)
 		final = -sum;
+	else
+		final = sum;
 
 	return (final);
 }
