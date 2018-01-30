@@ -33,6 +33,6 @@ void rev_string(char *s)
 	{
 		a = s[i];
 		s[i] = s[len - i];
-		s[len-i] = a;
+		s[len - i] = a;
 	}
 }

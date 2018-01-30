@@ -15,15 +15,15 @@ int main(void)
 	char randchar;
 
 	srand(time(0));
-	
+
 	while (sum <= 2646)
 	{
 		randchar = rand() % 94 + 33;
-		write(1,&randchar,1);
+		write(1, &randchar, 1);
 		sum += randchar;
 	}
 
 	randchar = 2772 - sum;
-	write(1,&randchar,1);
-	return 0;
+	write(1, &randchar, 1);
+	return (0);
 }
