@@ -8,7 +8,8 @@
 int _atoi(char *s)
 {
 	int pluses = 0, minuses = 0;
-	int sum = 0;
+	unsigned int sum = 0;
+	int final = 0;
 
 	for (; *s != '\0'; s++)
 	{
@@ -25,9 +26,10 @@ int _atoi(char *s)
 		sum += *s - '0';
 		s++;
 	}
+	final = sum;
 
 	if (minuses > pluses)
-		sum = -sum;
+		final = -sum;
 
-	return (sum);
+	return (final);
 }
