@@ -20,8 +20,11 @@ char *_strncpy(char *dest, char *src, int n)
 			break;
 	}
 	if (n > 0)
-		while (n--)
+		while (n)
+		{
 			*ptr++ = 0;
+			n--;
+		}
 
 	return (dest);
 }
