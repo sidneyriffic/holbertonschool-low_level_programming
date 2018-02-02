@@ -7,27 +7,28 @@
  */
 int _atoi(char *s)
 {
-	int pluses = 0, minuses = 0;
-	int i, sum = 0;
+	int signs = 1;
+	unsigned int sum = 0;
+	int final = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (; *s != '\0'; s++)
 	{
-		if (s[i] == '+')
-			pluses++;
-		else if (s[i] == '-')
-			minuses++;
-		else if (s[i] >= '0' && s[i] <= '9')
+		if (*s == '-')
+			signs *= -1;
+		else if (*s >= '0' && *s <= '9')
 			break;
 	}
-	while (s[i] >= '0' && s[i] <= '9')
+	while (*s >= '0' && *s <= '9')
 	{
 		sum *= 10;
-		sum += s[i] - '0';
-		i++;
+		sum += *s - '0';
+		s++;
 	}
 
-	if (minuses > pluses)
-		sum = -sum;
+	if (signs == -1)
+		final = -sum;
+	else
+		final = sum;
 
-	return (sum);
+	return (final);
 }
