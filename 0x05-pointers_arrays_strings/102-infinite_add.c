@@ -66,10 +66,16 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			return 0;
 	}
 	if (carry == 1)
+	{
 		r[index] = '1';
-	r[index + 1] = 0;
+		r[index + 1] = 0;
+	}
+	else
+	{
+		r[index--] = 0;
+	}
 	index2 = 0;
-	while (index2 < index)
+	while (index2 <= index)
 	{
 		carry = r[index];
 		r[index] = r[index2];
