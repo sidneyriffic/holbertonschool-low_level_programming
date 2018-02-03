@@ -15,7 +15,7 @@ void print_buffer(char *b, int size)
 	char *ptr = b;
 
 	if (size == 0)
-		printf ("\n");
+		printf("\n");
 	while (size > 0)
 	{
 		printf("%08x:", counter);
@@ -24,7 +24,7 @@ void print_buffer(char *b, int size)
 		{
 			if (!(i % 2))
 				printf(" ");
-			printf("%02x",*ptr++);
+			printf("%02x", *ptr++);
 			i++;
 			size--;
 			counter++;
@@ -41,7 +41,7 @@ void print_buffer(char *b, int size)
 		while (size2 > 0 && i < 10)
 		{
 			if (*b > 31 && *b != 127)
-				printf("%c",*b);
+				printf("%c", *b);
 			else
 				printf(".");
 			size2--;
