@@ -14,6 +14,8 @@ void print_buffer(char *b, int size)
 	int i, counter = 0, size2 = size;
 	char *ptr = b;
 
+	if (size == 0)
+		printf ("\n");
 	while (size > 0)
 	{
 		printf("%08x:", counter);
