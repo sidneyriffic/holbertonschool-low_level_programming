@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 
 /**
  * _strncpy - copys str from src to dest
@@ -14,17 +13,15 @@ char *_strncpy(char *dest, char *src, int n)
 {
 	int i = 0;
 
-	if (src[i] != '\0')
-		while (n > 0)
-		{
-			dest[i] = src[i];
-			i++;
-			if (src[i] == '\0')
-				break;
-			n--;
-		}
+	while (n > 0)
+	{
+		dest[i] = src[i];
+		i++;
+		if (src[i] == '\0')
+			break;
+		n--;
+	}
 	n--;
-	printf("n %d\n",n);
 	if (n > 0)
 		while (n)
 		{
