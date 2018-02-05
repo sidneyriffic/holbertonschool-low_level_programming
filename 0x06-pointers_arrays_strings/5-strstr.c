@@ -1,5 +1,5 @@
 /**
- * strstr - searches a string for a substring
+ * _strstr - searches a string for a substring
  *
  * @haystack: string to search
  * @needle: sub string to search for
@@ -28,5 +28,5 @@ char *_strstr(char *haystack, char *needle)
 		}
 		haystack++;
 	}
-	return 0;
+	return (0);
 }
