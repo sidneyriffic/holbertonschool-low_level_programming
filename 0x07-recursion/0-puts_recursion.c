@@ -1,4 +1,4 @@
-#include "putchar.c"
+#include "holberton.h"
 
 /**
  * _puts_recursion - puts, but recursively
