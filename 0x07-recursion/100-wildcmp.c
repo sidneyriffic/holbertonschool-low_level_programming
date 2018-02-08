@@ -1,4 +1,3 @@
-#include <stdio.h>
 int wildmode(char *s1, char *s2);
 
 /**
@@ -12,7 +11,6 @@ int wildmode(char *s1, char *s2);
  */
 int exactmode(char *s1, char *s2)
 {
-	printf("Exactmode %s / %s\n", s1, s2);
 	if (*s2 == '*')
 		return (wildmode(s1, s2 + 1));
 	if (*s1 == 0 && *s2 == 0)
@@ -33,7 +31,6 @@ int exactmode(char *s1, char *s2)
  */
 int wildmode(char *s1, char *s2)
 {
-	printf("Wildmode %s / %s\n", s1, s2);
 	if (*s2 == '*')
 		return (wildmode(s1, s2 + 1));
 	if (*s2 == 0)
