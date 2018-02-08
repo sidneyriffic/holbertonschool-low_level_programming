@@ -39,7 +39,7 @@ int wildmode(char *s1, char *s2)
 		return (0);
 	if (*s1 != *s2)
 		return (wildmode(s1 + 1, s2));
-	if (!(exactmode(s1, s2)))
+	if (!(exactmode(s1 + 1, s2 + 1)))
 		return (wildmode(s1 + 1, s2));
 	return (1);
 }
