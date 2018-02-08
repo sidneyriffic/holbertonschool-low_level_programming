@@ -22,7 +22,7 @@ int _strlen_recursion(char *s)
  */
 int palindrome_finder(char *s, int l)
 {
-	if (l < 2)
+	if (l < 1)
 		return (1);
 	if (*s == *(s + l))
 		return (palindrome_finder(s + 1, l - 2));
