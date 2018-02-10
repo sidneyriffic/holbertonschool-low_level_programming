@@ -14,12 +14,19 @@ int main(int argc, char **argv)
 	int i, j, sum = 0;
 
 	for (i = 1; i < argc; i++)
-		for (j = 0; argv[i][j] != 0; j++)
+	{
+		if (!(isdigit(argv[i][j]) || argv[i][0] != '-'))
+		{
+			printf("Error\n");
+			return (1);
+		}
+		for (j = 1; argv[i][j] != 0; j++)
 			if (!isdigit(argv[i][j]))
 			{
 				printf("Error\n");
 				return (1);
 			}
+	}
 
 	printf("loop 2\n");
 	for (i = 1; i < argc; i++)
