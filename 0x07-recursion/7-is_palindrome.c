@@ -13,7 +13,7 @@ int _strlen_recursion(char *s)
 }
 
 /**
- * palindrome_finder
+ * palindrome_finder - finds palindromes
  *
  * @s: string to find palindrome of
  * @l: last offset of string
@@ -22,12 +22,12 @@ int _strlen_recursion(char *s)
  */
 int palindrome_finder(char *s, int l)
 {
-	if (l < 2)
-		return 1;
+	if (l < 1)
+		return (1);
 	if (*s == *(s + l))
-		return (palindrome_finder(*(s + 1), l - 2));
-	return 0;
-}		
+		return (palindrome_finder(s + 1, l - 2));
+	return (0);
+}
 
 /**
  * is_palindrome - returns if string is palindrome or not
@@ -40,5 +40,5 @@ int is_palindrome(char *s)
 {
 	int len = _strlen_recursion(s);
 
-	return palindrome_finder(s, len - 1);
+	return (palindrome_finder(s, len - 1));
 }
