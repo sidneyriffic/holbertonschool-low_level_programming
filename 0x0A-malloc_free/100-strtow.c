@@ -12,7 +12,7 @@ char **strtow(char *str)
 	char **ret, *ptr = str;
 	int wc = 0, i = 0;
 
-	if (*str == 0 || str == 0)
+	if (str == 0 || *str == 0)
 		return (0);
 	while (*ptr)
 	{
