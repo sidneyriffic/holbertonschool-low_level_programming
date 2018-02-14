@@ -20,6 +20,8 @@ char **strtow(char *str)
 			wc++;
 		ptr++;
 	}
+	if (wc == 0)
+		return (NULL);
 	ret = malloc((wc + 1) * sizeof(char *));
 	if (ret == 0)
 		return (0);
@@ -37,11 +39,10 @@ char **strtow(char *str)
 				free(ret);
 				return (0);
 			}
-			ptr = ret[i];
+			ptr = ret[i++];
 			while (*str != ' ' && *str != 0)
 				*ptr++ = *str++;
 			*ptr = 0;
-			i++;
 		}
 		else
 			str++;
