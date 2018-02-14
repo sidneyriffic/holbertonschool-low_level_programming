@@ -16,7 +16,7 @@ char **strtow(char *str)
 		return (0);
 	while (*ptr)
 	{
-		if (*ptr == ' ' && !(*(ptr + 1) == ' '))
+		if (!(*ptr == ' ') && *(ptr + 1) == ' ')
 			wc++;
 		ptr++;
 	}
