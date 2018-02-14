@@ -43,7 +43,8 @@ char **strtow(char *str)
 			*ptr = 0;
 			i++;
 		}
-		str++;
+		else
+			str++;
 	}
 	ret[i] = 0;
 	return (ret);
