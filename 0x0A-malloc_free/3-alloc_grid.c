@@ -1,4 +1,5 @@
 #include <stdlib.h>
+
 /**
  * alloc_grid - allocates a matrix of integers
  *
@@ -9,24 +10,23 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int **grid, *ptr;
+	int **grid;
 	int i, j;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
 
 	grid = malloc(height * (int) sizeof(int *));
-	if (!grid)
+	if (grid == NULL)
 		return (NULL);
 
 	for (i = 0; i < height; i++)
 	{
-		ptr = malloc(width * (int) sizeof(int));
-		if (!ptr)
+		grid[i] = malloc(width * (int) sizeof(int));
+		if (!grid[i])
 			return (NULL);
 		for (j = 0; j < width; j++)
-			ptr[j] = 0;
-		grid[i] = ptr;
+			grid[i][j] = 0;
 	}
 
 	return (grid);
