@@ -25,7 +25,6 @@ char **strtow(char *str)
 		return (0);
 	while (*str)
 	{
-		printf("Before str %s i %d\n",str, i);
 		if (*str != ' ')
 		{
 			for (ptr = str, wc = 0; *ptr != ' ' && *ptr != 0;)
@@ -46,7 +45,6 @@ char **strtow(char *str)
 		}
 		else
 			str++;
-		printf("After str %s i %d\n", str, i);
 	}
 	ret[i] = 0;
 	return (ret);
