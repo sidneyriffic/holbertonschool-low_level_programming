@@ -59,7 +59,6 @@ void *_calloc_buffer(int num, int size)
 	ret = malloc(num * size);
 	if (ret == 0)
 	{
-		_prntstr("Error\n");
 		exit(98);
 	}
 
