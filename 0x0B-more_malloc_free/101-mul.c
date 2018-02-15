@@ -96,10 +96,8 @@ int main(int ac, char **av)
 	for (i = lenres - 1, len1--; len1 >= 0; len1--, i += len2 - 1)
 		for (j = len2 - 1, k = i; j >= 0; j--, k--, i--)
 		{
-			res[i] = ((av[1][len1] - '0') * (av[2][j] - '0')
-				  % 10) + res[i];
-			res[i - 1] = ((av[1][len1] - '0') * (av[2][j] - '0')
-				  / 10) + res[i - 1];
+			res[i] = ((av[1][len1] - '0') * (av[2][j] - '0')  % 10) + res[i];
+			res[i - 1] = ((av[1][len1] - '0') * (av[2][j] - '0') / 10) + res[i - 1];
 			if (res[i] > '9')
 			{
 				res[i] -= 10;
@@ -120,5 +118,6 @@ int main(int ac, char **av)
 		res++;
 	_prntstr(res);
 	_putchar('\n');
+	free(res);
 	return (0);
 }
