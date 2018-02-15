@@ -64,7 +64,9 @@ void *_calloc_buffer(int num, int size)
 	}
 
 	size = size * num;
-	for (ptr = ret; size-- >= 0;)
+	ptr = ret;
+	ptr[--size] = 0;
+	while (size-- > 0)
 		ptr[size] = '0';
 
 	return (ret);
@@ -92,7 +94,7 @@ int main(int ac, char **av)
 	len1 = numstrchk(av[1]);
 	len2 = numstrchk(av[2]);
 	lenres = len1 + len2;
-	res = _calloc_buffer(lenres, sizeof(char));
+	res = _calloc_buffer(lenres + 1, sizeof(char));
 	for (i = lenres - 1, len1--; len1 >= 0; len1--, i += len2 - 1)
 		for (j = len2 - 1, k = i; j >= 0; j--, k--, i--)
 		{
@@ -115,8 +117,9 @@ int main(int ac, char **av)
 			}
 		}
 	if (*res == '0')
-		res++;
-	_prntstr(res);
+		_prntstr(res + 1);
+	else
+		_prntstr(res);
 	_putchar('\n');
 	free(res);
 	return (0);
