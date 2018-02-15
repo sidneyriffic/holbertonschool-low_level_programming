@@ -20,9 +20,9 @@ void _prntstr(char *s)
  *
  * Return: Length of string. Exit 98 if not numeric.
  */
-unsigned int numstrchk(char *s)
+long int numstrchk(char *s)
 {
-	int len = 0;
+	long int len = 0;
 
 	if (*s == 0)
 	{
@@ -51,7 +51,7 @@ unsigned int numstrchk(char *s)
  *
  * Return: pointer to allocated space
  */
-void *_calloc_buffer(int num, int size)
+void *_calloc_buffer(long int num, long int size)
 {
 	void *ret;
 	char *ptr;
@@ -82,7 +82,7 @@ void *_calloc_buffer(int num, int size)
  */
 int main(int ac, char **av)
 {
-	int len1, len2, lenres, i, j, k, carryidx;
+	long int len1, len2, lenres, i, j, k, carryidx;
 	char *res;
 
 	if (ac != 3)
