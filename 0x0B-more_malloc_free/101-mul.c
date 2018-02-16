@@ -13,8 +13,8 @@ void _prntstr(char *s)
 }
 
 /**
- * numstrchk - checks arg array to see if the are numeric strings, converts from
- * ascii to byte int, and returns their length. Segfault on null pointer.
+ * numstrchk - checks arg array to see if the are numeric strings, converts
+ * from ascii to byte int, and returns their length. Segfault on null pointer.
  *
  * @s: string to check
  *
@@ -73,6 +73,24 @@ void *_calloc_buffer(long int num, long int size)
 }
 
 /**
+ * trimzero - moves pointer position to after last leading 0 in a string,
+ * or last zero if all zeros
+ *
+ * @s: char * we want to move
+ *
+ * Return: new position
+ */
+char *trimzero(char *s)
+{
+	while (*s == '0')
+		if (*(s + 1) != 0)
+			s++;
+		else
+			break;
+	return (s);
+}
+
+/**
  * main - multiply two integer strings of arbitrary size
  *
  * @ac: number of arguments
@@ -87,21 +105,10 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{_prntstr("Error\n"); return (98); }
-/*	while (*av[1] == '0')
-		if (av[1][1] != 0)
-			av[1]++;
-		else
-			break;
-	while (*av[2] == '0')
-		if (av[1][1] != 0)
-			av[2]++;
-		else
-			break;
+	av[2] = trimzero(av[2]);
+	av[1] = trimzero(av[1]);
 	if (*av[1] == '0' || *av[2] == '0')
-	{
-		_prntstr("0\n");
-		return (0);
-		}*/
+	{_prntstr("0\n"); return (0); }
 	len1 = numstrchk(av[1]);
 	len2 = numstrchk(av[2]);
 	lenres = len1 + len2;
@@ -122,8 +129,7 @@ int main(int ac, char **av)
 				while (res[carryidx] > '9')
 				{
 					res[carryidx] -= 10;
-					res[carryidx - 1]++;
-					carryidx--;
+					res[carryidx-- - 1]++;
 				}
 			}
 		}
