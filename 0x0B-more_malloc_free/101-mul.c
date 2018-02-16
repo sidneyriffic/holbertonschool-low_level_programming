@@ -13,14 +13,15 @@ void _prntstr(char *s)
 }
 
 /**
- * numstrchk - checks strings to see if the are numeric strings, converts from
+ * numstrchk - checks arg array to see if the are numeric strings, converts from
  * ascii to byte int, and returns their length. Segfault on null pointer.
  *
  * @s: string to check
+ * @i: 
  *
  * Return: Length of string. Exit 98 if not numeric.
  */
-long int numstrchk(char **s)
+long int numstrchk(char *s)
 {
 	long int len = 0;
 
@@ -102,8 +103,8 @@ int main(int ac, char **av)
 		_prntstr("0\n");
 		return (0);
 	}
-	len1 = numstrchk(av, 1);
-	len2 = numstrchk(av, 2);
+	len1 = numstrchk(av[1]);
+	len2 = numstrchk(av[2]);
 	lenres = len1 + len2;
 	res = _calloc_buffer(lenres + 1, sizeof(char));
 	for (i = lenres - 1, len1--; len1 >= 0; len1--, i += len2 - 1)
