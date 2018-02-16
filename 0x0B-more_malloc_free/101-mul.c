@@ -45,12 +45,12 @@ long int numstrchk(char *s)
 }
 
 /**
- * _calloc_buffer - allocate a block of memory of size * num and init to 0
+ * _calloc_buffer - allocate a block of memory of size * num and init to '0'
  *
  * @num: number of elements to allocate
  * @size: size of element
  *
- * Return: pointer to allocated space
+ * Return: pointer to allocated space, exit 98 on failure
  */
 void *_calloc_buffer(long int num, long int size)
 {
@@ -91,7 +91,7 @@ char *trimzero(char *s)
 }
 
 /**
- * main - multiply two integer strings of arbitrary size
+ * main - multiply two  positive integer strings of arbitrary size
  *
  * @ac: number of arguments
  * @av: arugments
