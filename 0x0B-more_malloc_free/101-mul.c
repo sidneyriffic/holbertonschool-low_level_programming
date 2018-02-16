@@ -17,7 +17,6 @@ void _prntstr(char *s)
  * ascii to byte int, and returns their length. Segfault on null pointer.
  *
  * @s: string to check
- * @i: 
  *
  * Return: Length of string. Exit 98 if not numeric.
  */
