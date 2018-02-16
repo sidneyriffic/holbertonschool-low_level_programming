@@ -20,13 +20,13 @@ void _prntstr(char *s)
  *
  * Return: Length of string. Exit 98 if not numeric.
  */
-long int numstrchk(char *s)
+long int numstrchk(char **s)
 {
 	long int len = 0;
 
 	if (*s == 0)
 	{
-		_prntstr("Error\n");
+		_prntstr("Error1\n");
 		exit(98);
 	}
 
@@ -34,7 +34,7 @@ long int numstrchk(char *s)
 	{
 		if (*s < '0' || *s > '9')
 		{
-			_prntstr("Error\n");
+			_prntstr("Error2\n");
 			exit(98);
 		}
 		*s -= '0';
@@ -87,13 +87,23 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{_prntstr("Error\n"); return (98); }
-
 	while (*av[1] == '0')
-		av[1]++;
+		if (av[1][1] != 0)
+			av[1]++;
+		else
+			break;
 	while (*av[2] == '0')
-		av[2]++;
-	len1 = numstrchk(av[1]);
-	len2 = numstrchk(av[2]);
+		if (av[1][1] != 0)
+			av[2]++;
+		else
+			break;
+	if (*av[1] == '0' || *av[2] == '0')
+	{
+		_prntstr("0\n");
+		return (0);
+	}
+	len1 = numstrchk(av, 1);
+	len2 = numstrchk(av, 2);
 	lenres = len1 + len2;
 	res = _calloc_buffer(lenres + 1, sizeof(char));
 	for (i = lenres - 1, len1--; len1 >= 0; len1--, i += len2 - 1)
@@ -117,11 +127,10 @@ int main(int ac, char **av)
 				}
 			}
 		}
-
 	if (*res == '0')
 		_prntstr(res + 1);
 	else
-	_prntstr(res);
+		_prntstr(res);
 	_putchar('\n');
 	free(res);
 	return (0);
