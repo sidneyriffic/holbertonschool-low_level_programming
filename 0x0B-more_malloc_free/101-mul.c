@@ -26,7 +26,7 @@ long int numstrchk(char *s)
 
 	if (*s == 0)
 	{
-		_prntstr("Error1\n");
+		_prntstr("Error\n");
 		exit(98);
 	}
 
@@ -34,7 +34,7 @@ long int numstrchk(char *s)
 	{
 		if (*s < '0' || *s > '9')
 		{
-			_prntstr("Error2\n");
+			_prntstr("Error\n");
 			exit(98);
 		}
 		*s -= '0';
@@ -87,7 +87,7 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{_prntstr("Error\n"); return (98); }
-	while (*av[1] == '0')
+/*	while (*av[1] == '0')
 		if (av[1][1] != 0)
 			av[1]++;
 		else
@@ -101,7 +101,7 @@ int main(int ac, char **av)
 	{
 		_prntstr("0\n");
 		return (0);
-	}
+		}*/
 	len1 = numstrchk(av[1]);
 	len2 = numstrchk(av[2]);
 	lenres = len1 + len2;
