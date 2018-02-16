@@ -13,8 +13,8 @@ void _prntstr(char *s)
 }
 
 /**
- * numstrchk - checks strings to see if the are numeric strings and
- * returns their length. Segfault on null pointer.
+ * numstrchk - checks strings to see if the are numeric strings, converts from
+ * ascii to byte int, and returns their length. Segfault on null pointer.
  *
  * @s: string to check
  *
@@ -37,6 +37,7 @@ long int numstrchk(char *s)
 			_prntstr("Error\n");
 			exit(98);
 		}
+		*s -= '0';
 		len++;
 		s++;
 	}
@@ -65,12 +66,11 @@ void *_calloc_buffer(long int num, long int size)
 	size = size * num;
 	ptr = ret;
 	ptr[--size] = 0;
-	while (size-- > 0)
+	while (size--)
 		ptr[size] = '0';
 
 	return (ret);
 }
-
 
 /**
  * main - multiply two integer strings of arbitrary size
@@ -82,23 +82,25 @@ void *_calloc_buffer(long int num, long int size)
  */
 int main(int ac, char **av)
 {
-	long int len1, len2, lenres, i, j, k, carryidx;
+	long int len1, len2, lenres, i, j, carryidx;
 	char *res;
 
 	if (ac != 3)
-	{
-		_prntstr("Error\n");
-		return (98);
-	}
+	{_prntstr("Error\n"); return (98); }
+
+	while (*av[1] == '0')
+		av[1]++;
+	while (*av[2] == '0')
+		av[2]++;
 	len1 = numstrchk(av[1]);
 	len2 = numstrchk(av[2]);
 	lenres = len1 + len2;
 	res = _calloc_buffer(lenres + 1, sizeof(char));
 	for (i = lenres - 1, len1--; len1 >= 0; len1--, i += len2 - 1)
-		for (j = len2 - 1, k = i; j >= 0; j--, k--, i--)
+		for (j = len2 - 1; j >= 0; j--, i--)
 		{
-			res[i] = ((av[1][len1] - '0') * (av[2][j] - '0')  % 10) + res[i];
-			res[i - 1] = ((av[1][len1] - '0') * (av[2][j] - '0') / 10) + res[i - 1];
+			res[i] = (av[1][len1] * av[2][j] % 10) + res[i];
+			res[i - 1] = (av[1][len1] * av[2][j] / 10) + res[i - 1];
 			if (res[i] > '9')
 			{
 				res[i] -= 10;
@@ -115,10 +117,11 @@ int main(int ac, char **av)
 				}
 			}
 		}
+
 	if (*res == '0')
 		_prntstr(res + 1);
 	else
-		_prntstr(res);
+	_prntstr(res);
 	_putchar('\n');
 	free(res);
 	return (0);
