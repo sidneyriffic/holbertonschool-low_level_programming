@@ -109,10 +109,12 @@ int main(int ac, char **av)
 	av[1] = trimzero(av[1]);
 	if (*av[1] == '0' || *av[2] == '0')
 	{_prntstr("0\n"); return (0); }
+
 	len1 = numstrchk(av[1]);
 	len2 = numstrchk(av[2]);
 	lenres = len1 + len2;
 	res = _calloc_buffer(lenres + 1, sizeof(char));
+
 	for (i = lenres - 1, len1--; len1 >= 0; len1--, i += len2 - 1)
 		for (j = len2 - 1; j >= 0; j--, i--)
 		{
@@ -123,21 +125,14 @@ int main(int ac, char **av)
 				res[i] -= 10;
 				res[i - 1]++;
 			}
-			if (res[i - 1] > '9')
-			{
-				carryidx = i - 1;
-				while (res[carryidx] > '9')
-				{
-					res[carryidx] -= 10;
-					res[carryidx-- - 1]++;
-				}
-			}
 		}
+
 	if (*res == '0')
 		_prntstr(res + 1);
 	else
 		_prntstr(res);
 	_putchar('\n');
 	free(res);
+
 	return (0);
 }
