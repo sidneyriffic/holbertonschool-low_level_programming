@@ -100,16 +100,21 @@ char *trimzero(char *s)
  */
 int main(int ac, char **av)
 {
-	long int len1, len2, lenres, i, j, carryidx;
+	long int len1, len2, lenres, i, j;
 	char *res;
 
 	if (ac != 3)
-	{_prntstr("Error\n"); return (98); }
+	{
+		_prntstr("Error\n");
+		return (98);
+	}
 	av[2] = trimzero(av[2]);
 	av[1] = trimzero(av[1]);
 	if (*av[1] == '0' || *av[2] == '0')
-	{_prntstr("0\n"); return (0); }
-
+	{
+		_prntstr("0\n");
+		return (0);
+	}
 	len1 = numstrchk(av[1]);
 	len2 = numstrchk(av[2]);
 	lenres = len1 + len2;
