@@ -1,6 +1,8 @@
-#ifndef 0OBJECTLIKEH
-#define 0OBJECTLIKEH
+#ifndef OBJECTLIKEH
+#define OBJECTLIKEH
 
 #define SIZE 1024
+
+typedef int asdf;
 
 #endif
