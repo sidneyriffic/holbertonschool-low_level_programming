@@ -35,5 +35,5 @@ int main(int ac, char *av[])
 	}
 
 	printf("%d\n", f(a, b));
-	return (1);
+	return (0);
 }
