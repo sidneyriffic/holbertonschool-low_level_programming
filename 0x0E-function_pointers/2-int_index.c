@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 /**
  * int_index - checks an array for an integer that matches
  * the function defined by cmp
