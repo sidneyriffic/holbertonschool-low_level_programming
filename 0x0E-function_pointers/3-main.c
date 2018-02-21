@@ -20,19 +20,19 @@ int main(int ac, char *av[])
 		printf("Error\n");
 		return (98);
 	}
-	if (av[2][0] == 0 || av[2][1] != 0)
+	a = atoi(av[1]);
+	b = atoi(av[3]);
+	f = get_op_func(av[2]);
+	if (f == NULL || av[2][1] != 0)
 	{
 		printf("Error\n");
 		return (99);
 	}
-	a = atoi(av[1]);
-	b = atoi(av[3]);
 	if ((av[2][0] == '/' || av[2][0] == '%') && b == 0)
 	{
 		printf("Error\n");
 		return (100);
 	}
-	f = get_op_func(av[2]);
 
 	printf("%d\n", f(a, b));
 	return (1);
