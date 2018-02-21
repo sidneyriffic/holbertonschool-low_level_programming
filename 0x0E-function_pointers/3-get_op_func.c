@@ -8,16 +8,16 @@
  *
  * Return: pointer to function if successful, or NULL if fails
  */
-int (*get_op_func(char*s))(int, int)
+int (*get_op_func(char *s))(int, int)
 {
-	char key[] = {'+', '-', '*', '/', '%'};
-	int (*f[])(int, int) = {op_add, op_sub, op_mul, op_div, op_mod};
+	op_t key[] = {{"+", op_add}, {"-", op_sub}, {"*", op_mul},
+		      {"/", op_div}, {"%", op_mod} };
 	int i = 0;
 
 	while (i < 5)
 	{
-		if (key[i] == *s)
-			return (f[i]);
+		if (*key[i].op == *s)
+			return (key[i].f);
 		i++;
 	}
 	return (NULL);

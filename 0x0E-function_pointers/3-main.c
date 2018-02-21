@@ -14,6 +14,7 @@ int main(int ac, char *av[])
 {
 	int a, b;
 	int (*f)(int, int);
+
 	if (ac != 4)
 	{
 		printf("Error\n");
@@ -26,7 +27,6 @@ int main(int ac, char *av[])
 	}
 	a = atoi(av[1]);
 	b = atoi(av[3]);
-	printf("%c %d\n",av[2][0],b);
 	if ((av[2][0] == '/' || av[2][0] == '%') && b == 0)
 	{
 		printf("Error\n");
