@@ -29,6 +29,7 @@ int main(int ac, char *av[])
 		printf("%x", *f++);
 	for (i = 1; i < n; i++)
 		printf(" %x", *f++);
-	printf("\n");
+	if (n > 0)
+		printf("\n");
 	return (0);
 }
