@@ -1,19 +1,55 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include "variadic_functions.h"
+
 /**
- * goto_valid - return pointer to first valid specifier in string
+ * printf_char - printfs a char from var args
  *
- * @str: string
+ * @list: va_list to print from
  *
- * Return: pointer to first valid specifier in format string
+ * Return: void
  */
-const char *goto_valid(const char *str)
+void printf_char(va_list list)
 {
-	while (*str != 'c' && *str != 'i' && *str != 'f'
-	      && *str != 's' && *str != 0)
-		str++;
-	return (str);
+	printf("%c", va_arg(list, int));
 }
+
+/**
+ * printf_int - printfs an int from var args
+ *
+ * @list: va_list to print from
+ *
+ * Return: void
+ */
+void printf_int(va_list list)
+{
+	printf("%d", va_arg(list, int));
+}
+
+/**
+ * printf_float - printfs a float from var args
+ *
+ * @list: va_list to print from
+ *
+ * Return: void
+ */
+void printf_float(va_list list)
+{
+	printf("%f", va_arg(list, double));
+}
+
+/**
+ * printf_string - printfs a string from var args
+ *
+ * @list: va_list to print from
+ *
+ * Return: void
+ */
+void printf_string(va_list list)
+{
+	printf("%s", va_arg(list, char *));
+}
+
 
 /**
  * print_all - prints various types given a format string for the arguments
@@ -26,30 +62,29 @@ void print_all(const char * const format, ...)
 {
 	const char *ptr;
 	va_list list;
+	funckey key[4] = { {printf_char, 'c'}, {printf_int, 'i'},
+			   {printf_float, 'f'}, {printf_string, 's'} };
+	int keyind, notfirst = 0;
 
+	ptr = format;
 	va_start(list, format);
-	ptr = goto_valid(format);
 	while (*ptr)
 	{
-		printf("Top of while %s\n", ptr);
-		switch (*ptr)
+		keyind = 0;
+		while (keyind < 4 && *ptr != key[keyind].spec)
+			keyind++;
+		if (keyind == 4)
 		{
-		case 'c':
-			printf("%c", va_arg(list, int));
-			break;
-		case 'i':
-			printf("%i", va_arg(list, int));
-			break;
-		case 'f':
-			printf("%f", va_arg(list, double));
-			break;
-		case 's':
-			printf("%s", va_arg(list, char *));
+			ptr++;
+			continue;
 		}
-		ptr++;
-		ptr = goto_valid(ptr);
-		if (*ptr)
+		if (notfirst)
 			printf(", ");
+		notfirst = 1;
+		key[keyind].f(list);
+		ptr++;
 	}
 	printf("\n");
+
+	va_end(list);
 }
