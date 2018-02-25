@@ -48,6 +48,7 @@ void printf_float(va_list list)
 void printf_string(va_list list)
 {
 	char *str = va_arg(list, char*);
+
 	while (str != NULL)
 	{
 		printf("%s", str);
