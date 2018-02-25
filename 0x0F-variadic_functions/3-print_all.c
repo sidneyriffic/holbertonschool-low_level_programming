@@ -11,7 +11,7 @@
  */
 void printf_char(va_list list)
 {
-	printf("%c", va_arg(list, int));
+	printf("%c", (char) va_arg(list, int));
 }
 
 /**
@@ -35,7 +35,7 @@ void printf_int(va_list list)
  */
 void printf_float(va_list list)
 {
-	printf("%f", va_arg(list, double));
+	printf("%f", (float) va_arg(list, double));
 }
 
 /**
