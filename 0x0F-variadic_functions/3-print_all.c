@@ -68,7 +68,7 @@ void print_all(const char * const format, ...)
 
 	ptr = format;
 	va_start(list, format);
-	while (*ptr)
+	while (format != NULL && *ptr)
 	{
 		keyind = 0;
 		while (keyind < 4 && *ptr != key[keyind].spec)
