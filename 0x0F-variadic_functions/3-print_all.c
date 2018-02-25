@@ -47,7 +47,13 @@ void printf_float(va_list list)
  */
 void printf_string(va_list list)
 {
-	printf("%s", va_arg(list, char *));
+	char *str = va_arg(list, char*);
+	while (str != NULL)
+	{
+		printf("%s", str);
+		return;
+	}
+	printf("(nil)");
 }
 
 
@@ -77,6 +83,7 @@ void print_all(const char * const format, ...)
 			notfirst = 1;
 			key[keyind].f(list);
 			ptr++;
+			keyind = -1;
 		}
 		keyind++;
 		ptr += keyind / 4;
