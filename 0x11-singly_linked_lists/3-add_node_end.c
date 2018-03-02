@@ -6,6 +6,7 @@
  * add_node_end - adds a node to the end of a list_t list
  *
  * @head: node to add a node after
+ * @str: string to put in new node
  *
  * Return: address of new element
  */
