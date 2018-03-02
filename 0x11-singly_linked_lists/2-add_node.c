@@ -6,6 +6,7 @@
  * add_node - adds a node to a list_t list
  *
  * @head: node to add a node after
+ * @str: str to put into struct
  *
  * Return: address of new element
  */
