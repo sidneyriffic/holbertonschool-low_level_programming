@@ -54,6 +54,7 @@ size_t free_listint_safe(listint_t **h)
 				free(*h);
 				break;
 			}
+			len++;
 			next = next->next;
 			free((*h)->next);
 			loop = 0;
