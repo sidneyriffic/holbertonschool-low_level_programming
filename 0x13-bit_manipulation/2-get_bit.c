@@ -1,5 +1,5 @@
 /**
- * get_bit - gets the value of a bit at index, 
+ * get_bit - gets the value of a bit at index,
  * starting from least bit at 0
  *
  * @n: number to get bit from

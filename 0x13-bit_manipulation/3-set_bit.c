@@ -1,5 +1,5 @@
 /**
- * set_bit - sets the value of a bit at index, 
+ * set_bit - sets the value of a bit at index,
  * starting from least bit at 0
  *
  * @n: number to get bit from
