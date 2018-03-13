@@ -15,7 +15,7 @@
 int create_file(const char *filename, char *text_content)
 {
 	int file;
-	int length, inlen;
+	int length = 0, inlen = 0;
 	char *ptr;
 
 	if (filename == NULL)
@@ -31,8 +31,6 @@ int create_file(const char *filename, char *text_content)
 			inlen++;
 		length = write(file, text_content, inlen);
 	}
-	else
-		inlen = length;
 
 	if (close(file) == -1 || inlen != length)
 		return (-1);
