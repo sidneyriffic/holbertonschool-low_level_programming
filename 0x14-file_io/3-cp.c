@@ -6,7 +6,8 @@
 #include <fcntl.h>
 #include <stdio.h>
 /**
- * close_errchk - closes a file descriptor and prints an error message if it fails
+ * close_errchk - closes a file descriptor and prints
+ * an error message if it fails
  *
  * @fd: file descriptor to close
  *
@@ -16,10 +17,44 @@ int close_errchk(int fd)
 {
 	int err = 0;
 
-	err = close (fd);
+	err = close(fd);
 	if (err == -1)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 	return (err);
+}
+
+/**
+ * write_err - error handler for a write error
+ *
+ * @fd1: first descriptor to close
+ * @fd2: second descriptor to close
+ * @filename: filename prompting the error
+ *
+ * Return: 99
+ */
+int write_err(int fd1, int fd2, char *filename)
+{
+	close_errchk(fd1);
+	close_errchk(fd2);
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+	return (99);
+}
+
+/**
+ * read_err - error handler for a read error
+ *
+ * @fd1: first descriptor to close
+ * @fd2: second descriptor to close
+ * @filename: filename prompting the error
+ *
+ * Return: 98
+ */
+int read_err(int fd1, int fd2, char *filename)
+{
+	close_errchk(fd1);
+	close_errchk(fd2);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+	return (98);
 }
 
 /**
@@ -37,7 +72,7 @@ int close_errchk(int fd)
  */
 int main(int ac, char *av[])
 {
-	char buf[1024];
+	char *buf;
 	ssize_t lenr, lenw;
 	int file_from, file_to;
 
@@ -49,7 +84,8 @@ int main(int ac, char *av[])
 	file_from = open(av[1], O_RDONLY);
 	if (file_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
+			av[1]);
 		return (98);
 	}
 	file_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC,
@@ -60,25 +96,22 @@ int main(int ac, char *av[])
 		close_errchk(file_from);
 		return (99);
 	}
-	do {
-		lenr = read(file_from, buf, 1024);
-		if (lenr == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-			close_errchk(file_from);
-			close_errchk(file_to);
-			return (98);
-		}
-		lenw = write(file_to, buf, lenr);
-		if (lenw == -1 || lenw != lenr)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
-			close_errchk(file_from);
-			close_errchk(file_to);
-			return (99);
-		}
-	} while (lenr == 1024);
+	buf = malloc(sizeof(char) * 1024);
+	if (buf != NULL)
+		do {
+			lenr = read(file_from, buf, 1024);
+			if (lenr == -1)
+				return (read_err(file_from, file_to, av[1]));
+			lenw = write(file_to, buf, lenr);
+			if (lenw == -1 || lenw != lenr)
+				return (write_err(file_from, file_to, av[2]));
+		} while (lenr == 1024);
 	close_errchk(file_from);
 	close_errchk(file_to);
+	if (buf == NULL)
+	{
+		free(buf);
+		return (1);
+	}
 	return (0);
 }
