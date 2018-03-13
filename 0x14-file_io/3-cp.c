@@ -79,5 +79,5 @@ int main(int ac, char *av[])
 	} while (lenr == 1024);
 	close_errchk(file_from);
 	close_errchk(file_to);
-	return (1);
+	return (0);
 }
