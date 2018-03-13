@@ -22,7 +22,7 @@ int main(int ac, char *av[])
 {
 	char buf[1024];
 	ssize_t lenr, lenw;
-	int file_from, file_to, closefile;
+	int file_from, file_to;
 
 	if (ac != 3)
 	{
