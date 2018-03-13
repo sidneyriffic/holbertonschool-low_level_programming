@@ -32,7 +32,7 @@ int create_file(const char *filename, char *text_content)
 		length = write(file, text_content, inlen);
 	}
 	else
-		inlen = 0;
+		inlen = length;
 
 	if (close(file) == -1 || inlen != length)
 		return (-1);
