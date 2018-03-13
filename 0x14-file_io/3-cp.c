@@ -18,7 +18,7 @@ int close_errchk(int fd)
 
 	err = close (fd);
 	if (err == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 	return (err);
 }
 
