@@ -15,12 +15,15 @@
  */
 int close_errchk(int fd)
 {
-	int err = 0;
+	int err;
 
 	err = close(fd);
 	if (err == -1)
+	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-	return (err);
+		return (100);
+	}
+	return (0);
 }
 
 /**
@@ -73,7 +76,7 @@ int read_err(int fd1, int fd2, char *filename)
 int main(int ac, char *av[])
 {
 	char buf[1024];
-	int lenr, lenw, file_from, file_to;
+	int lenr, lenw, file_from, file_to, err;
 
 	if (ac != 3)
 	{
@@ -103,7 +106,9 @@ int main(int ac, char *av[])
 		if (lenw == -1 || lenw != lenr)
 			return (write_err(file_from, file_to, av[2]));
 	} while (lenr == 1024);
-	close_errchk(file_from);
-	close_errchk(file_to);
+	err = close_errchk(file_from);
+	err += close_errchk(file_to);
+	if (err != 0)
+		return (100);
 	return (0);
 }
