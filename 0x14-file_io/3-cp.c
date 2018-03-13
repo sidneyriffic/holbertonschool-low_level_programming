@@ -43,8 +43,7 @@ int main(int ac, char *av[])
 		return (99);
 	}
 
-	do
-	{
+	do {
 		lenr = read(file_from, buf, 1024);
 		if (lenr == -1)
 		{
