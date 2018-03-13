@@ -6,6 +6,23 @@
 #include <fcntl.h>
 #include <stdio.h>
 /**
+ * close_errchk - closes a file descriptor and prints an error message if it fails
+ *
+ * @fd: file descriptor to close
+ *
+ * Return: 0 on success, -1 on failure
+ */
+int close_errchk(int fd)
+{
+	int err = 0;
+
+	err = close (fd);
+	if (err == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
+	return (err);
+}
+
+/**
  * main - copy one file to another, new file with perms 664
  * usage - cp file_from file_to
  *
@@ -39,6 +56,7 @@ int main(int ac, char *av[])
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+		close_errchk(file_from);
 		return (99);
 	}
 	do {
@@ -46,18 +64,20 @@ int main(int ac, char *av[])
 		if (lenr == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+			close_errchk(file_from);
+			close_errchk(file_to);
 			return (98);
 		}
 		lenw = write(file_to, buf, lenr);
 		if (lenw == -1 || lenw != lenr)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+			close_errchk(file_from);
+			close_errchk(file_to);
 			return (99);
 		}
 	} while (lenr == 1024);
-	if (close(file_from) == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-	if (close(file_to) == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
+	close_errchk(file_from);
+	close_errchk(file_to);
 	return (1);
 }
