@@ -51,11 +51,11 @@ int main(int ac, char *av[])
 			return (98);
 		}
 		lenw = write(file_to, buf, lenr);
-		if (lenw == -1)
+		if (lenw == -1 || lenw != lenr)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 			return (99);
 		}
-	} while (lenr > 0);
+	} while (lenr == 1024);
 	return (1);
 }
