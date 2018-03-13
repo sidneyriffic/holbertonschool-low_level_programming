@@ -34,9 +34,9 @@ int close_errchk(int fd)
  */
 int write_err(int fd1, int fd2, char *filename)
 {
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
 	close_errchk(fd1);
 	close_errchk(fd2);
-	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
 	return (99);
 }
 
@@ -51,9 +51,9 @@ int write_err(int fd1, int fd2, char *filename)
  */
 int read_err(int fd1, int fd2, char *filename)
 {
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 	close_errchk(fd1);
 	close_errchk(fd2);
-	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 	return (98);
 }
 
@@ -72,9 +72,8 @@ int read_err(int fd1, int fd2, char *filename)
  */
 int main(int ac, char *av[])
 {
-	char *buf;
-	ssize_t lenr, lenw;
-	int file_from, file_to;
+	char *buf = malloc(sizeof(char) * 1024);
+	int lenr, lenw, file_from, file_to;
 
 	if (ac != 3)
 	{
@@ -96,7 +95,6 @@ int main(int ac, char *av[])
 		close_errchk(file_from);
 		return (99);
 	}
-	buf = malloc(sizeof(char) * 1024);
 	if (buf != NULL)
 		do {
 			lenr = read(file_from, buf, 1024);
