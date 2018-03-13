@@ -72,7 +72,7 @@ int read_err(int fd1, int fd2, char *filename)
  */
 int main(int ac, char *av[])
 {
-	char *buf = malloc(sizeof(char) * 1024);
+	char buf[1024];
 	int lenr, lenw, file_from, file_to;
 
 	if (ac != 3)
@@ -95,21 +95,15 @@ int main(int ac, char *av[])
 		close_errchk(file_from);
 		return (99);
 	}
-	if (buf != NULL)
-		do {
-			lenr = read(file_from, buf, 1024);
-			if (lenr == -1)
-				return (read_err(file_from, file_to, av[1]));
-			lenw = write(file_to, buf, lenr);
-			if (lenw == -1 || lenw != lenr)
-				return (write_err(file_from, file_to, av[2]));
-		} while (lenr == 1024);
+	do {
+		lenr = read(file_from, buf, 1024);
+		if (lenr == -1)
+			return (read_err(file_from, file_to, av[1]));
+		lenw = write(file_to, buf, lenr);
+		if (lenw == -1 || lenw != lenr)
+			return (write_err(file_from, file_to, av[2]));
+	} while (lenr == 1024);
 	close_errchk(file_from);
 	close_errchk(file_to);
-	if (buf == NULL)
-	{
-		free(buf);
-		return (1);
-	}
 	return (0);
 }
