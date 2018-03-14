@@ -162,6 +162,7 @@ void printentry(char *head)
  * 2 on file open failure
  * 3 on read failure
  * 4 on failure to read enough bytes for a 32 bit file
+ * 98 if elf magic is not matched
  */
 int main(int ac, char *av[])
 {
@@ -182,7 +183,7 @@ int main(int ac, char *av[])
 	{
 		dprintf(STDERR_FILENO,
 			"readelf: Error: hellofile: Failed to read file header\n");
-		return (1);
+		return (98);
 	}
 	printf("ELF Header:\n  Magic:   ");
 	for (i = 0; i < 16; i++)
