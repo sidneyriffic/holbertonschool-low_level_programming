@@ -67,25 +67,44 @@ void printabi(char *head)
 	printf("  %-35sUNIX - ", "OS/ABI:");
 	switch (head[7])
 	{
-	case 0: printf("System V\n"); break;
-	case 1: printf("HP-UX\n"); break;
-	case 2: printf("NetBSD\n"); break;
-	case 3: printf("Linux\n"); break;
-	case 4: printf("GNU Hurd\n"); break;
-	case 5: printf("Solaris\n"); break;
-	case 6: printf("AIX\n"); break;
-	case 7: printf("IRIX\n"); break;
-	case 8: printf("FreeBSD\n"); break;
-	case 9: printf("Tru64\n"); break;
-	case 10: printf("Novell Modesto\n"); break;
-	case 11: printf("OpenBSD\n"); break;
-	case 12: printf("Open VMS\n"); break;
-	case 13: printf("NonStop Kernel\n"); break;
-	case 14: printf("AROS\n"); break;
-	case 15: printf("Fenix OS\n"); break;
-	case 16: printf("CloudABI\n"); break;
-	case 53: printf("Sortix\n"); break;
-	default: printf("<unknown %02x", head[7]); break;
+	case 0: printf("System V\n");
+		break;
+	case 1: printf("HP-UX\n");
+		break;
+	case 2: printf("NetBSD\n");
+		break;
+	case 3: printf("Linux\n");
+		break;
+	case 4: printf("GNU Hurd\n");
+		break;
+	case 5: printf("Solaris\n");
+		break;
+	case 6: printf("AIX\n");
+		break;
+	case 7: printf("IRIX\n");
+		break;
+	case 8: printf("FreeBSD\n");
+		break;
+	case 9: printf("Tru64\n");
+		break;
+	case 10: printf("Novell Modesto\n");
+		break;
+	case 11: printf("OpenBSD\n");
+		break;
+	case 12: printf("Open VMS\n");
+		break;
+	case 13: printf("NonStop Kernel\n");
+		break;
+	case 14: printf("AROS\n");
+		break;
+	case 15: printf("Fenix OS\n");
+		break;
+	case 16: printf("CloudABI\n");
+		break;
+	case 53: printf("Sortix\n");
+		break;
+	default: printf("<unknown %02x", head[7]);
+		break;
 	}
 	printf("  %-35s%d\n", "ABI Version:", head[8]);
 }
@@ -100,13 +119,13 @@ void printabi(char *head)
 void printtype(char *head)
 {
 	printf("  %-35s", "Type:");
-	if(head[16] == 1)
+	if (head[16] == 1)
 		printf("REL (Relocatable file)\n");
-	else if(head[16] == 2)
+	else if (head[16] == 2)
 		printf("EXEC (Executable file)\n");
-	else if(head[16] == 3)
+	else if (head[16] == 3)
 		printf("DYN (Shared object file)\n");
-	else if(head[16] == 4)
+	else if (head[16] == 4)
 		printf("CORE (Core file)\n");
 	else
 		printf("<unknown>: %02x%02x\n", head[16], head[17]);
@@ -135,7 +154,19 @@ void printentry(char *head)
 		printf("%02x", (unsigned char) head[i--]);
 	printf("\n");
 }
-	
+
+/**
+ * main - parses an elf header file
+ *
+ * @ac: number of args
+ * @av: arugment strings
+ *
+ * Return: 0 on success
+ * 1 on incorrect arg number
+ * 2 on file open failure
+ * 3 on read failure
+ * 4 on failure to read enough bytes for a 32 bit file
+ */
 int main(int ac, char *av[])
 {
 	int ifile, i;
@@ -147,8 +178,10 @@ int main(int ac, char *av[])
 	if (ifile == -1)
 		return (2);
 	i = read(ifile, head, 32);
-	if (i < 32)
+	if (i == -1)
 		return (3);
+	if (i < 28)
+		return (4);
 	if (head[0] != 0x7f || head[1] != 'E' || head[2] != 'L' || head[3] != 'F')
 		return (4);
 	printf("ELF Header:\n  Magic:   ");
@@ -161,4 +194,5 @@ int main(int ac, char *av[])
 	printabi(head);
 	printtype(head);
 	printentry(head);
+	return (0);
 }
