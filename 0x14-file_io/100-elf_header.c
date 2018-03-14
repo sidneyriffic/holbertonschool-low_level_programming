@@ -170,7 +170,7 @@ void printentry(char *head)
 int main(int ac, char *av[])
 {
 	int ifile, i;
-	char head[32], *ptr;
+	char head[32];
 
 	if (ac != 2)
 		return (1);
