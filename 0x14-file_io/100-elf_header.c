@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
-
+#include <elf.h>
 /**
  * printclass - prints the class from an elf header
  *
@@ -50,10 +50,18 @@ void printdata(char *head)
 void printversion(char *head)
 {
 	printf("  %-35s", "Version:");
-	if (head[6] == 1)
-		printf("1 (current)\n");
+	if (head[6] <= EV_CURRENT)
+	{
+		printf("%d", head[6]);
+		if (head[6] == EV_CURRENT)
+			printf(" (current)\n");
+		else
+			printf("\n");
+	}
 	else
+	{
 		printf("49 <unknown %%lx>");
+	}
 }
 
 /**
