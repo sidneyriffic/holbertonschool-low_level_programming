@@ -65,47 +65,42 @@ void printversion(char *head)
 void printabi(char *head)
 {
 	printf("  %-35sUNIX - ", "OS/ABI:");
-	switch (head[7])
-	{
-	case 0: printf("System V\n");
-		break;
-	case 1: printf("HP-UX\n");
-		break;
-	case 2: printf("NetBSD\n");
-		break;
-	case 3: printf("Linux\n");
-		break;
-	case 4: printf("GNU Hurd\n");
-		break;
-	case 5: printf("Solaris\n");
-		break;
-	case 6: printf("AIX\n");
-		break;
-	case 7: printf("IRIX\n");
-		break;
-	case 8: printf("FreeBSD\n");
-		break;
-	case 9: printf("Tru64\n");
-		break;
-	case 10: printf("Novell Modesto\n");
-		break;
-	case 11: printf("OpenBSD\n");
-		break;
-	case 12: printf("Open VMS\n");
-		break;
-	case 13: printf("NonStop Kernel\n");
-		break;
-	case 14: printf("AROS\n");
-		break;
-	case 15: printf("Fenix OS\n");
-		break;
-	case 16: printf("CloudABI\n");
-		break;
-	case 53: printf("Sortix\n");
-		break;
-	default: printf("<unknown %02x", head[7]);
-		break;
-	}
+	if (head[7] == 0)
+		printf("System V\n");
+	else if (head[7] == 1)
+		printf("HP-UX\n");
+	else if (head[7] == 2)
+		printf("NetBSD\n");
+	else if (head[7] == 3)
+		printf("Linux\n");
+	else if (head[7] == 4)
+		printf("GNU Hurd\n");
+	else if (head[7] == 5)
+		printf("Solaris\n");
+	else if (head[7] == 6)
+		printf("AIX\n");
+	else if (head[7] == 7)
+		printf("IRIX\n");
+	else if (head[7] == 8)
+		printf("FreeBSD\n");
+	else if (head[7] == 9)
+		printf("Tru64\n");
+	else if (head[7] == 10)
+		printf("Novell Modesto\n");
+	else if (head[7] == 11)
+		printf("OpenBSD\n");
+	else if (head[7] == 12)
+		printf("Open VMS\n");
+	else if (head[7] == 13)
+		printf("NonStop Kernel\n");
+	else if (head[7] == 14)
+		printf("AROS\n");
+	else if (head[7] == 15)
+		printf("Fenix OS\n");
+	else if (head[7] == 16)
+		printf("CloudABI\n");
+	else
+		printf("<unknown %02x", head[7]);
 	printf("  %-35s%d\n", "ABI Version:", head[8]);
 }
 
@@ -176,14 +171,14 @@ int main(int ac, char *av[])
 		return (1);
 	ifile = open(av[1], O_RDONLY);
 	if (ifile == -1)
-		return (2);
+		return (1);
 	i = read(ifile, head, 32);
 	if (i == -1)
-		return (3);
+		return (1);
 	if (i < 28)
-		return (4);
+		return (1);
 	if (head[0] != 0x7f || head[1] != 'E' || head[2] != 'L' || head[3] != 'F')
-		return (4);
+		return (1);
 	printf("ELF Header:\n  Magic:   ");
 	for (i = 0; i < 16; i++)
 		printf("%02x ", (unsigned int) head[i]);
