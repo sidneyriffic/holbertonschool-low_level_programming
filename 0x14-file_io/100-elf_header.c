@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -178,7 +179,11 @@ int main(int ac, char *av[])
 	if (i < 28)
 		return (1);
 	if (head[0] != 0x7f || head[1] != 'E' || head[2] != 'L' || head[3] != 'F')
+	{
+		dprintf(STDERR_FILENO,
+			"readelf: Error: hellofile: Failed to read file header\n");
 		return (1);
+	}
 	printf("ELF Header:\n  Magic:   ");
 	for (i = 0; i < 16; i++)
 		printf("%02x ", (unsigned int) head[i]);
