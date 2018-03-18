@@ -106,11 +106,12 @@ void printabi(char *head)
 		printf("UNIX - AROS\n");
 	else if (head[7] == 16)
 		printf("UNIX - Fenix OS\n");
-	else if (head[7] == 17)
-		printf("UNIX - CloudABI\n");
 	else
+	{
 /*		printf("<unknown: %02x>\n", head[7]);*/
-		printf(" \n");
+		printf(" ");
+		printf("\n");
+	}
 	printf("  %-35s%d\n", "ABI Version:", head[8]);
 }
 
