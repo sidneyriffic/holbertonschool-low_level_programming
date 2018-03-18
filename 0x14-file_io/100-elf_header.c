@@ -110,7 +110,6 @@ void printabi(char *head)
 		printf("UNIX - CloudABI\n");
 	else
 		printf("<unknown: %02x>\n", head[7]);
-/*		printf("\n");*/
 	printf("  %-35s%d\n", "ABI Version:", head[8]);
 }
 
@@ -214,9 +213,9 @@ int main(int ac, char *av[])
 			"readelf: Error: hellofile: Failed to read file header\n");
 		return (98);
 	}
-	printf("ELF Header:\n  Magic:  ");
+	printf("ELF Header:\n  Magic:   ");
 	for (i = 0; i < 16; i++)
-		printf(" %02x", (unsigned int) head[i]);
+		printf("%02x ", (unsigned int) head[i]);
 	printf("\n");
 	printclass(head);
 	printdata(head);
