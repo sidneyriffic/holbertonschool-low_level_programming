@@ -109,8 +109,8 @@ void printabi(char *head)
 	else if (head[7] == 17)
 		printf("UNIX - CloudABI\n");
 	else
-/*		printf("<unknown: %02x>\n", head[7]);*/
-		printf("\n");
+		printf("<unknown: %02x>\n", head[7]);
+/*		printf("\n");*/
 	printf("  %-35s%d\n", "ABI Version:", head[8]);
 }
 
