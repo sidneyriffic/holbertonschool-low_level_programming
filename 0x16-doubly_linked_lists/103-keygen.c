@@ -31,13 +31,14 @@ int main(int ac, char *av[])
 	for (ptr = uname, temp = *ptr; *ptr; ptr++)
 		if (temp < *ptr)
 			temp = *ptr;
-	srand(temp ^ 0xe);
-	password[3] = str[rand() & 0x3f];
+/*	srand(temp ^ 0xe);
+	password[3] = str[rand() & 0x3f];*/
 	for (ptr = uname, temp = 0; *ptr; ptr++)
 		temp += *ptr * *ptr;
 	password[4] = str[(temp ^ 0xef) & 0x3f];
 	for (temp = *uname, ct = 0; ct < temp; ct++)
-		randh = rand();
+		;
+/*		randh = rand();*/
 	password[5] = str[(randh ^ 0xe5) & 0x3f];
 	printf("%s %s", uname, password);
 	return (0);
