@@ -7,7 +7,7 @@
  * @ac: argc
  * @av: argv
  *
- * Return: 0 on completion
+ * Return: 0 on completion, 1 if incorrect num of args
  */
 int main(int ac, char *av[])
 {
@@ -18,6 +18,8 @@ int main(int ac, char *av[])
 	int len = 0, temp, ct, randh;
 	char *str = (char *) nums, *uname = av[1], *ptr, password[7];
 
+	if (ac != 2)
+		return (1);
 	password[6] = 0;
 	for (ptr = uname; *ptr; ptr++)
 		len++;
@@ -31,15 +33,14 @@ int main(int ac, char *av[])
 	for (ptr = uname, temp = *ptr; *ptr; ptr++)
 		if (temp < *ptr)
 			temp = *ptr;
-/*	srand(temp ^ 0xe);
-	password[3] = str[rand() & 0x3f];*/
+	srand(temp ^ 0xe);
+	password[3] = str[rand() & 0x3f];
 	for (ptr = uname, temp = 0; *ptr; ptr++)
 		temp += *ptr * *ptr;
 	password[4] = str[(temp ^ 0xef) & 0x3f];
 	for (temp = *uname, ct = 0; ct < temp; ct++)
-		;
-/*		randh = rand();*/
+		randh = rand();
 	password[5] = str[(randh ^ 0xe5) & 0x3f];
-/*	printf("%s %s", uname, password);*/
+	printf("%s", password);
 	return (0);
 }
