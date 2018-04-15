@@ -40,6 +40,6 @@ int main(int ac, char *av[])
 		;
 /*		randh = rand();*/
 	password[5] = str[(randh ^ 0xe5) & 0x3f];
-	printf("%s %s", uname, password);
+/*	printf("%s %s", uname, password);*/
 	return (0);
 }
