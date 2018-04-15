@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * main - keygen for crackme5
+ *
+ * @ac: argc
+ * @av: argv
+ *
+ * Return: 0 on completion
+ */
 int main(int ac, char *av[])
 {
 	long nums[] = {0x3877445248432d41, 0x42394530534e6c37,
@@ -11,11 +19,6 @@ int main(int ac, char *av[])
 	char *str = (char *) nums, *uname = av[1], *ptr, password[7];
 
 	password[6] = 0;
-	
-/*	while (len < 64)
-	{
-		putchar(str[len++]);
-		}*/
 	for (ptr = uname; *ptr; ptr++)
 		len++;
 	password[0] = str[(len ^ 0x3b) & 0x3f];
