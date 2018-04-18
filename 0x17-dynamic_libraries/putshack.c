@@ -3,7 +3,7 @@
 
 int puts(char *a)
 {
-	a = "Congratulations, you won the jackpot!";
+	a = "Congratulations, you won the jackpot!\n";
 	write(1, a, strlen(a));
 }
 
