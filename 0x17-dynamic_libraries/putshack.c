@@ -24,5 +24,6 @@ int printf(char *form, int num)
 	if (ct == 5)
 		form = "+ 9\n";
 	write(1, form, strlen(form));
+	ct++;
 	return 1;
 }
