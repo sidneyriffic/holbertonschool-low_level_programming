@@ -1,29 +1,22 @@
 #include <unistd.h>
 #include <string.h>
 
-int puts(char *a)
+int rand()
 {
-	a = "Congratulations, you won the jackpot!\n";
-	write(1, a, strlen(a));
-}
+	static int ct = -1;
 
-int printf(char *form, int num)
-{
-	static int ct = 0;
-
-	if (ct == 0)
-		form = "9 ";
-	if (ct == 1)
-		form = "8 ";
-	if (ct == 2)
-		form = "10 ";
-	if (ct == 3)
-		form = "24 ";
-	if (ct == 4)
-		form = "75 ";
-	if (ct == 5)
-		form = "- 9\n";
-	write(1, form, strlen(form));
 	ct++;
-	return 1;
+	if (ct == 0)
+		return 8;
+	if (ct == 1)
+		return 8;
+	if (ct == 2)
+		return 7;
+	if (ct == 3)
+		return 9;
+	if (ct == 4)
+		return 23;
+	if (ct == 5)
+		return 74;
+	return ct * ct % 30000;
 }
