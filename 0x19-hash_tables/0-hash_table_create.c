@@ -1,6 +1,13 @@
 #include "hash_tables.h"
 #include <stdlib.h>
 
+/**
+ * hash_table_create - creates a hash table
+ *
+ * @size: number of hash table buckets to create
+ *
+ * Return: address of new hash table, or NULL if failure
+ */
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *newtable;
