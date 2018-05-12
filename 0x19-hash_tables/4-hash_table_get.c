@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include "hash_tables.h"
 #include <string.h>
 
@@ -14,7 +15,8 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	hash_node_t *ptr;
 	unsigned long int index;
 
-	if (ht == NULL || ht->array == NULL || ht->size == 0 || key == NULL || *key == 0)
+	if (ht == NULL || ht->size == 0 ||
+	    key == NULL || *key == 0)
 		return (NULL);
 	index = hash_djb2((const unsigned char *) key);
 	index %= ht->size;
