@@ -1,6 +1,13 @@
 #include "hash_tables.h"
 #include <stdio.h>
 
+/**
+ * hash_table_print - print an entire hash table
+ *
+ * @ht: hash table to print
+ *
+ * Return: void
+ */
 void hash_table_print(const hash_table_t *ht)
 {
 	unsigned long int idx;
