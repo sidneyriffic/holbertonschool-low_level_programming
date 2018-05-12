@@ -16,6 +16,8 @@ shash_table_t *shash_table_create(unsigned long int size)
 	shash_table_t *newtable;
 	unsigned long int idx;
 
+	if (size == 0)
+		return (NULL);
 	newtable = malloc(sizeof(shash_table_t));
 	if (newtable == NULL)
 		return (NULL);
@@ -58,7 +60,6 @@ void hashdllsort(shash_table_t *ht, shash_node_t *movnode)
 	ptr = ht->shead;
 	if (strcmp(movnode->key, ptr->key) < 0)
 	{
-		printf("moving head\n");
 		movnode->snext = ht->shead;
 		ht->shead = ht->shead->sprev = movnode;
 		return;
@@ -119,7 +120,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			free(newnode);
 			return (0);
 		}
-		free(newnode->value);
 		newnode->value = strdup(value);
 		if (newnode->value == NULL)
 		{
