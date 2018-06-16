@@ -5,9 +5,9 @@ NAME = holberton
 HEADER = m.h
 CFLAGS = -Werror -Wall -Wextra -pedantic
 
-holberton: $(OBJ)
+$(NAME): $(OBJ)
 
-all: holberton
+all: clean holberton
 
 clean:
 	$(RM) $(NAME) *~
