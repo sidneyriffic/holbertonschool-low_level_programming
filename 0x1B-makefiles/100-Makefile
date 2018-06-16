@@ -7,7 +7,7 @@ CFLAGS = -Werror -Wall -Wextra -pedantic
 
 $(NAME): $(OBJ)
 
-all: clean $(NAME)
+all: clean $(HEADER) $(NAME)
 
 clean:
 	$(RM) $(NAME) *~
@@ -17,6 +17,6 @@ oclean:
 
 fclean: clean oclean
 
-re: oclean $(OBJ)
+re: oclean $(HEADER) $(OBJ)
 
 .PHONY: clean oclean
