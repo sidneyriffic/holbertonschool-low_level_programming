@@ -2,9 +2,9 @@ CC = gcc
 SRC = holberton.c main.c
 OBJ = $(SRC:.c=.o)
 NAME = holberton
-HEADER = holberton.h
+HEADER = m.h
 
-%.o: $(SRC) $(HEADER)
+%.o: %.c $(HEADER)
 	$(CC) -c -o $@ $<
 
 all: $(OBJ)
