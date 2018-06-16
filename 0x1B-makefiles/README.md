@@ -5,4 +5,4 @@
 4. 3-Makefile: as above, plus clean, oclean, fclean, re and RM
 5. 4-Makefile: as above, plus CFLAGS
 6. 5-island-perimeter.py: calculate perimeter of island in grid map
-7. 100-Makefile: as 4-Makefile, but with more restrictions/efficiency
+7. 100-Makefile: as 4-Makefile, but using implicit rules
