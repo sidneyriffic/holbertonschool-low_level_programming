@@ -5,7 +5,7 @@ NAME = holberton
 HEADER = m.h
 CFLAGS = -Werror -Wall -Wextra -pedantic
 
-all: clean $(HEADER) $(NAME)
+all: $(HEADER) clean $(NAME)
 
 $(NAME): $(OBJ)
 
@@ -17,6 +17,6 @@ oclean:
 
 fclean: clean oclean
 
-re: oclean $(HEADER) $(OBJ)
+re: $(HEADER) oclean $(OBJ)
 
 .PHONY: clean oclean $(CC)
