@@ -7,7 +7,7 @@ CFLAGS = -Werror -Wall -Wextra -pedantic
 
 $(NAME): $(OBJ)
 
-all: clean holberton
+all: clean $(NAME)
 
 clean:
 	$(RM) $(NAME) *~
