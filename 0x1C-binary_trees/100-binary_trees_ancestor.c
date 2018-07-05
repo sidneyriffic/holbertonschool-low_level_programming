@@ -22,10 +22,12 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 	for (secondptr = (binary_tree_t *) second;
 	     secondptr->parent != NULL; seconddepth++)
 		secondptr = secondptr->parent;
+	if (firstptr != secondptr)
+		return (NULL);
 	firstptr = (binary_tree_t *) first;
 	secondptr = (binary_tree_t *) second;
 	if (firstdepth > seconddepth)
-		for (firstdepth -= seconddepth; (firstdepth > 0); firstdepth--)
+		for (firstdepth -= seconddepth; firstdepth > 0; firstdepth--)
 			firstptr = firstptr->parent;
 	if (seconddepth > firstdepth)
 		for (seconddepth -= firstdepth; seconddepth > 0; seconddepth--)
