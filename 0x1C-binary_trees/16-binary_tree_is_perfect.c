@@ -1,10 +1,9 @@
 #include "binary_trees.h"
 
 /**
- * get_nodes_perfect - get height of tree while checking for fullness
+ * get_height_perfect - get height of tree while checking for fullness
  *
  * @tree: tree to check
- * @nodes: count of nodes
  *
  * Return: whether tree is balanced
  */
