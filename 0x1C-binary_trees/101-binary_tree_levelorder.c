@@ -31,6 +31,8 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
 	size_t depth, ret;
 
+	if (tree == NULL)
+		return;
 	for (depth = 0, ret = 1; ret; depth++)
 		ret = do_at_level(tree, depth, func);
 }
