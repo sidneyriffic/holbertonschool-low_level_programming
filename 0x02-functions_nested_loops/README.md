@@ -14,5 +14,5 @@
 **100-times_table.c:** function that prints a multiplication table of a given size between 0 and 15 inclusive.  
 **101-natural.c:** a program that computes the sum of all numbers that are multiples of 3 or 5.  
 **102-fibonacci.c:** a program that computes the first 50 Bibonacci numbers.  
-**103-fibonacci.c:** program that sums the values of all even terms of the Fibonacci sequence below 4,000,000. 
+**103-fibonacci.c:** program that sums the values of all even terms of the Fibonacci sequence below 4,000,000.  
 **104-fibonacci.c:** program that prints the first 98 Fibonacci numbers without using long, malloc, pointers, arrays or structures.  
