@@ -1,1 +1,1 @@
-Projects dealing with C and other low level programming.
+Projects dealing with mostly C programming and data structures.
